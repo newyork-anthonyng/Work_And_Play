@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<% if current_user %>
+  Hi <%= current_user.fname %> | <%= link_to "Logout", logout_path %>
+<% end %>
+
+<p><%= flash.notice %></p>
 <%= yield %>
 
 </body>
