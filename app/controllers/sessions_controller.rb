@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    @user = User.new
   end
 
   def create
@@ -9,8 +10,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash.notice = 'Logged in'
-      redirect_to '/'
+      redirect_to user_path(user)
     else
+      flash.notice = 'Passwords dont match'
       redirect_to welcome_path
     end
   end

@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root 'sessions#new'
 
+  resources :users do
+    resources :tasks
+  end
+
   get '/welcome/' => 'sessions#new'
   post '/login'   => 'sessions#create'
   get '/logout'   => 'sessions#destroy'

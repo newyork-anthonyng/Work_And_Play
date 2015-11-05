@@ -1,0 +1,11 @@
+.tasks_container {
+  width:500px;
+}
+
+.play_tasks {
+  float:left;
+}
+
+.work_tasks {
+  float:right;
+}
