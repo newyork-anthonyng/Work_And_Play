@@ -5,6 +5,7 @@
 
   <div class="play_tasks">
     <h2>Play</h2>
+    <%= render partial: 'tasks/form' %>
 
     <ul>
       <% @play_tasks.each do |task| %>
@@ -17,6 +18,7 @@
                 <%= link_to tag.content, tag_path(tag) %>
               <% end %>
               <br>
+            <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
           <% else %>
             Not completed.
             <%= task.description %><br>
@@ -26,6 +28,9 @@
                 <%= link_to tag.content, tag_path(tag) %>
               <% end %>
               <br>
+            <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
+            <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
+            <%= link_to "Mark Complete", complete_user_task_path(task.user, task) %>
           <% end %>
         </li>
       <% end %>
@@ -34,6 +39,7 @@
 
   <div class="work_tasks">
     <h2>Work</h2>
+    <%= render partial: 'tasks/form' %>
 
     <ul>
       <% @work_tasks.each do |task| %>
@@ -41,10 +47,14 @@
         <% if task.completed %>
           <strong><%= task.description %></strong>
           <br>
+          <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
         <% else %>
           Not completed.
           <%= task.description %>
           <br>
+          <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
+          <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
+          <%= link_to "Mark Complete", complete_user_task_path(task.user, task) %>
         <% end %>
       </li>
       <% end %>

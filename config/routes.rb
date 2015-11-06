@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get '/tags/:id' => 'tags#show', as: "tag"
   get '/user/:id/tags' => 'tags#user_index', as: "user_tags"
 
-  get '/welcome/' => 'sessions#new'
+
+  get '/welcome' => 'sessions#new'
+  get '/home'    => 'users#home'
   post '/login'   => 'sessions#create'
   get '/logout'   => 'sessions#destroy'
 

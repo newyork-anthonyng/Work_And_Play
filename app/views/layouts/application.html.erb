@@ -9,7 +9,8 @@
 <body>
 
 <% if current_user %>
-  <%= link_to "Home", user_path(current_user) %><br>
+  <%= "Hey #{current_user.fname}" %><br>
+  <%= link_to "Home", home_path %><br>
   <%= link_to "All Users", users_path %><br>
   <%= link_to "All Tags", tags_path %><br>
   <%= link_to "Your Tags", user_tags_path(current_user) %><br>

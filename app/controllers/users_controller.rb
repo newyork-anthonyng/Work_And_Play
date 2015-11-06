@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :authorize
-  
+
   def index
-    @users = User.all
+    @users = User.all.order(:fname)
     @users_score = 0
     @users.each do |user|
       @users_score += user.score
@@ -22,8 +22,19 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @play_tasks = @user.tasks.where(category: "play")
-    @work_tasks = @user.tasks.where(category: "work")
+    if current_user.id == @user.id
+      redirect_to home_path
+    else
+      @play_tasks = @user.tasks.where(category: "play").order(:description)
+      @work_tasks = @user.tasks.where(category: "work").order(:description)
+
+    end
+  end
+
+  def home
+    @user = current_user
+    @play_tasks = @user.tasks.where(category: "play").order(:description)
+    @work_tasks = @user.tasks.where(category: "work").order(:description)
   end
 
   private
