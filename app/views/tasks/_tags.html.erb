@@ -1,0 +1,4 @@
+Tag list:
+<% task.tags.each do |tag| %>
+  <%= link_to tag.content, tag_path(tag) %>
+<% end %>

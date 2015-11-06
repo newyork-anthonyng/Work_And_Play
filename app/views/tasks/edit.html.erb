@@ -9,10 +9,6 @@
     <%= f.label :category %><br>
     <%= f.text_field :category %>
   </p>
-  <p>
-    <%= f.label :points %><br>
-    <%= f.text_field :points %>
-  </p>
 
   <p><%= link_to "Delete", user_task_path(@task.user, @task), method: :delete %></p>
   <p><%= f.submit "Update" %></p>

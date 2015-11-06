@@ -3,25 +3,26 @@
     <li>
       <% if task.completed %>
         <strong><%= task.description %></strong><br>
+        Points: <%= task.points %><br>
 
-        Tag list:
-          <% task.tags.each do |tag| %>
-            <%= link_to tag.content, tag_path(tag) %>
-          <% end %>
-          <br>
+        <%= render partial: "tasks/tags", locals: { :task => task } %>
+        <br>
+
+        <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
         <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
+
       <% else %>
         Not completed.
         <%= task.description %><br>
+        Points: <%= task.points %><br>
 
-        Tag list:
-          <% task.tags.each do |tag| %>
-            <%= link_to tag.content, tag_path(tag) %>
-          <% end %>
+        <%= render partial: "tasks/tags", locals: { :task => task } %>
           <br>
+
         <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
         <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
         <%= link_to "Mark Complete", complete_user_task_path(task.user, task) %>
+
       <% end %>
     </li>
   <% end %>

@@ -9,9 +9,12 @@ class TasksController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @task = @user.tasks.create(task_params)
+
+    # "play" = +1, "work" = -1
     @task.points = @task.category == "play" ? 1 : -1
     @task.save
-    redirect_to user_path(@task.user)
+
+    redirect_to user_path(@user)
   end
 
   def edit
@@ -20,22 +23,23 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+
     if @task.update(task_params)
-      flash.notice = "Task updated"
+      @task.points = @task.category == "play" ? 1 : -1
+      @task.save
+      flash.notice = "task updated"
       redirect_to user_path(@task.user)
-    else
-      flash.notice = "Error in updating task"
     end
   end
 
   def complete
     @task = Task.find(params[:id])
+
     @task.completed = true
     @task.save
 
-    @user = User.find(params[:user_id])
     flash.notice = "Task marked as completed"
-    redirect_to user_path(@user)
+    redirect_to user_path(@task.user)
   end
 
   def destroy
