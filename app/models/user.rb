@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   validates :lname, :presence => { message: "last name is missing" }
   validates :email, :presence => { message: "email is missing" },
                     :uniqueness => { message: "email is already used" }
-  validates :password, length: { in: 6..20, message: "password has to be between 6 and 20 characters" }
-  validates :password_confirmation, length: { in: 6..20, message: "password confirmation missing"}
+  validates :password, :length => { in: 6..20, message: "password has to be between 6 and 20 characters" },
+                       :presence => { message: "password can't be blank" }
 
   has_many :tasks
   has_many :likes, through: :tasks

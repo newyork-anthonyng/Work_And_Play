@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
     if @user.save
       flash.notice = "Username created."
+      session[:user_id] = @user.id
+      flash.notice = 'Logged in'
       redirect_to user_path(@user)
     else
       render "sessions/new"
