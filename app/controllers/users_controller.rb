@@ -29,7 +29,6 @@ class UsersController < ApplicationController
     else
       @play_tasks = @user.tasks.where(category: "play").order(:description)
       @work_tasks = @user.tasks.where(category: "work").order(:description)
-
     end
   end
 

@@ -20,4 +20,14 @@ class User < ActiveRecord::Base
     return score
   end
 
+  def likes
+    total_likes = 0
+
+    tasks.each do |task|
+      total_likes += task.votes_for.size
+    end
+
+    return total_likes
+  end
+
 end

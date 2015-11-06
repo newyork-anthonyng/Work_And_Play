@@ -1,6 +1,11 @@
 class TasksController < ApplicationController
   before_action :authorize
 
+  def index
+    @play_tasks = Task.all.where(category: "play")
+    @work_tasks = Task.all.where(category: "work")
+  end
+
   def create
     @user = User.find(params[:user_id])
     @task = @user.tasks.create(task_params)
@@ -41,9 +46,8 @@ class TasksController < ApplicationController
   end
 
   def like
-    @user = User.find(params[:user_id])
     @task = Task.find(params[:id])
-    @task.liked_by @user
+    @task.liked_by current_user
 
     redirect_to :back
   end

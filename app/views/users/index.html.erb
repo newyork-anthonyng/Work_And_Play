@@ -4,8 +4,10 @@
   <% @users.each do |user| %>
     <% if user.id == current_user.id %>
       <li><%= link_to "YOU! #{user.fname}", home_path %> || <%= user.score %></li>
+      <h2>Total Likes: <%= user.likes %></h2>
     <% else %>
       <li><%= link_to user.fname, user_path(user) %> || <%= user.score %></li>
+      <h2>Total Likes: <%= user.likes %></h2>
     <% end %>
   <% end %>
 </ul>

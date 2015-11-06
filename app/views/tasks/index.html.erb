@@ -1,0 +1,25 @@
+<div class="tasks_container">
+  <div class="play_tasks">
+    <ul>
+      <% @play_tasks.each do |task| %>
+        <li>
+          <%= link_to task.description, user_path(task.user) %>
+          <%= "By #{task.user.fname} #{task.user.lname}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="tasks_container">
+  <div class="work_tasks">
+    <ul>
+      <% @work_tasks.each do |task| %>
+        <li>
+          <%= link_to task.description, user_path(task.user) %>
+          <%= "By #{task.user.fname} #{task.user.lname}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
