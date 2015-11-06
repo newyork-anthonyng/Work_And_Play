@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize
+  before_action :authorize, except: :create
 
   def index
     @users = User.all.order(:fname)

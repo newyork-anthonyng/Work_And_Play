@@ -6,6 +6,8 @@ class Task < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
 
+  acts_as_votable
+
   def tag_list
     self.tags.collect do |tag|
       tag.content

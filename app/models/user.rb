@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => { message: "email is missing" },
                     :uniqueness => { message: "email is already used" }
   validates :password, length: { in: 6..20, message: "password has to be between 6 and 20 characters" }
+  validates :password_confirmation, length: { in: 6..20, message: "password confirmation missing"}
 
   has_many :tasks
   has_many :likes, through: :tasks

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authorize
-  
+
   def create
     @user = User.find(params[:user_id])
     @task = @user.tasks.create(task_params)
@@ -38,6 +38,14 @@ class TasksController < ApplicationController
     @task.destroy
     flash.notice = "\'#{@task.description} \' deleted."
     redirect_to user_path(@user)
+  end
+
+  def like
+    @user = User.find(params[:user_id])
+    @task = Task.find(params[:id])
+    @task.liked_by @user
+
+    redirect_to :back
   end
 
   private

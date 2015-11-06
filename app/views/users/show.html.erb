@@ -11,6 +11,8 @@
         <li>
           <% if task.completed %>
             <strong><%= task.description %></strong><br>
+            <%= "Total Likes: #{task.votes_for.size}" %><br>
+            <%= link_to "Like", like_user_task_path(task.user, task) %><br>
 
             Tag list:
               <% task.tags.each do |tag| %>
@@ -20,6 +22,8 @@
           <% else %>
             Not completed.
             <%= task.description %><br>
+            <%= "Total Likes: #{task.votes_for.size}" %><br>
+            <%= link_to "Like", like_user_task_path(task.user, task) %><br>
 
             Tag list:
               <% task.tags.each do |tag| %>
@@ -39,11 +43,15 @@
       <% @work_tasks.each do |task| %>
       <li>
         <% if task.completed %>
-          <strong><%= task.description %></strong>
+          <strong><%= task.description %></strong><br>
+          <%= "Total Likes: #{task.votes_for.size}" %><br>
+          <%= link_to "Like", like_user_task_path(task.user, task) %><br>
           <br>
         <% else %>
           Not completed.
           <%= task.description %>
+          <%= "Total Likes: #{task.votes_for.size}" %><br>
+          <%= link_to "Like", like_user_task_path(task.user, task) %><br>
           <br>
         <% end %>
       </li>
