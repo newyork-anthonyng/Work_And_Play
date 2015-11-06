@@ -8,8 +8,11 @@ Rails.application.routes.draw do
         get :complete
       end
     end
+
+    resources :tags
   end
 
+  get '/tags'           => 'tags#index'
   get '/welcome/' => 'sessions#new'
   post '/login'   => 'sessions#create'
   get '/logout'   => 'sessions#destroy'

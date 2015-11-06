@@ -11,11 +11,23 @@
       <% @play_tasks.each do |task| %>
         <li>
           <% if task.completed %>
-            <strong><%= task.description %></strong>
+            <strong><%= task.description %></strong><br>
+
+            Tag list:
+              <% task.tags.each do |tag| %>
+                <%= link_to tag.content, tag_path(tag) %>
+              <% end %>
+
             <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
           <% else %>
             Not completed.
-            <%= task.description %>
+            <%= task.description %><br>
+
+            Tag list:
+              <% task.tags.each do |tag| %>
+                <%= link_to tag.content, tag_path(tag) %>
+              <% end %>
+              
             <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
             <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
             <%= link_to "Mark Complete", complete_user_task_path(task.user, task) %>

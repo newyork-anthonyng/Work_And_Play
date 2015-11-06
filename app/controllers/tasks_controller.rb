@@ -45,7 +45,8 @@ class TasksController < ApplicationController
         :description,
         :category,
         :points,
-        :completed
+        :completed,
+        :tag_list
       )
     end
 end

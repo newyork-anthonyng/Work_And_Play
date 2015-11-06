@@ -1,0 +1,8 @@
+<h1>All Tags</h1>
+<ul>
+  <% @tags.each do |tag| %>
+    <li>
+      <%= link_to tag.content, user_tag_path(current_user, tag) %>
+    </li>
+  <% end %>
+</ul>
