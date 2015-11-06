@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @users_score = 0
     @users.each do |user|
       @users_score += user.score
-    end 
+    end
   end
 
   def create

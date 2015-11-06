@@ -22,9 +22,20 @@ class TasksController < ApplicationController
 
   def complete
     @task = Task.find(params[:id])
-    @task.updateAttribute(:completed, true)
+    @task.completed = true
+    @task.save
 
     @user = User.find(params[:user_id])
+    flash.notice = "Task marked as completed"
+    redirect_to user_path(@user)
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @user = User.find(params[:user_id])
+
+    @task.destroy
+    flash.notice = "\'#{@task.description} \' deleted."
     redirect_to user_path(@user)
   end
 

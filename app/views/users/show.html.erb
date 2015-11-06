@@ -10,9 +10,16 @@
     <ul>
       <% @play_tasks.each do |task| %>
         <li>
-          <%= task.description %>,
-          <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
-          <%= link_to "Complete", complete_user_task_path(task.user, task) %>
+          <% if task.completed %>
+            <strong><%= task.description %></strong>
+            <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
+          <% else %>
+            Not completed.
+            <%= task.description %>
+            <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
+            <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
+            <%= link_to "Mark Complete", complete_user_task_path(task.user, task) %>
+          <% end %>
         </li>
       <% end %>
     </ul>
@@ -24,11 +31,18 @@
 
     <ul>
       <% @work_tasks.each do |task| %>
-        <li>
-          <%= task.description %>,
+      <li>
+        <% if task.completed %>
+          <strong><%= task.description %></strong>
+          <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
+        <% else %>
+          Not completed.
+          <%= task.description %>
+          <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
           <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
-          <%= link_to "Complete", complete_user_task_path(task.user, task) %>
-        </li>
+          <%= link_to "Mark Complete", complete_user_task_path(task.user, task) %>
+        <% end %>
+      </li>
       <% end %>
     </ul>
   </div>
