@@ -1,0 +1,9 @@
+<h1><%= @user.fname %>'s Tags</h1>
+
+<ul>
+  <% @user_tags.each do |tag| %>
+    <li>
+      <%= link_to tag.content, tag_path(tag) %> 
+    </li>
+  <% end %>
+</ul>

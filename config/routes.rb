@@ -8,11 +8,12 @@ Rails.application.routes.draw do
         get :complete
       end
     end
-
-    resources :tags
   end
 
-  get '/tags'           => 'tags#index'
+  get '/tags'     => 'tags#index'
+  get '/tags/:id' => 'tags#show', as: "tag"
+  get '/user/:id/tags' => 'tags#user_index', as: "user_tags"
+
   get '/welcome/' => 'sessions#new'
   post '/login'   => 'sessions#create'
   get '/logout'   => 'sessions#destroy'
