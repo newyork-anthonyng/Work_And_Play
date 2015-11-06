@@ -2,6 +2,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @users_score = 0
+    @users.each do |user|
+      @users_score += user.score
+    end 
   end
 
   def create
@@ -20,14 +24,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @play_tasks = @user.tasks.where(category: "play")
     @work_tasks = @user.tasks.where(category: "work")
-
-    # @score = 0
-    # if @user.tasks.size > 0
-    #   @user.tasks.each do |task|
-    #     @score += task.points
-    #   end
-    # end
-
   end
 
   private

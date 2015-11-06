@@ -1,7 +1,7 @@
-<h1>Everyone</h1>
+<h1>Everyone | Score: <%= @users_score %></h1>
 
 <ul>
   <% @users.each do |user| %>
-    <li><%= link_to user.fname, user_path(user) %></li>
+    <li><%= link_to user.fname, user_path(user) %> || <%= user.score %></li>
   <% end %>
 </ul>
