@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+    @users = User.all
   end
 
   def create
@@ -20,10 +21,12 @@ class UsersController < ApplicationController
     @play_tasks = @user.tasks.where(category: "play")
     @work_tasks = @user.tasks.where(category: "work")
 
-    @score = 0
-    @user.tasks.each do |task|
-      @score += task.points
-    end
+    # @score = 0
+    # if @user.tasks.size > 0
+    #   @user.tasks.each do |task|
+    #     @score += task.points
+    #   end
+    # end
 
   end
 

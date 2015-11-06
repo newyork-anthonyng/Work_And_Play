@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   resources :users do
-    resources :tasks
+    resources :tasks do
+      member do
+        patch :complete
+      end
+    end
   end
 
   get '/welcome/' => 'sessions#new'

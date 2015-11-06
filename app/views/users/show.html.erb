@@ -2,20 +2,33 @@
 <h2>Score: <%= @score %></h2>
 
 <div class="tasks_container">
+
   <div class="play_tasks">
     <h2>Play</h2>
+    <%= render partial: 'tasks/form' %>
+
     <ul>
       <% @play_tasks.each do |task| %>
-        <li><%= task.description %></li>
+        <li>
+          <%= task.description %>,
+          <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
+          <%= link_to "Complete", complete_user_task_path(task.user, task) %>
+        </li>
       <% end %>
     </ul>
   </div>
 
   <div class="work_tasks">
     <h2>Work</h2>
+    <%= render partial: 'tasks/form' %>
+
     <ul>
       <% @work_tasks.each do |task| %>
-        <li><%= task.description %></li>
+        <li>
+          <%= task.description %>,
+          <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
+          <%= link_to "Complete", complete_user_task_path(task.user, task) %>
+        </li>
       <% end %>
     </ul>
   </div>

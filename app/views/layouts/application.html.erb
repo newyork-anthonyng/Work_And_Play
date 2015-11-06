@@ -9,7 +9,9 @@
 <body>
 
 <% if current_user %>
-  Hi <%= current_user.fname %> | <%= link_to "Logout", logout_path %>
+  <%= link_to "Home", user_path(current_user) %><br>
+  <%= link_to "All Users", users_path %><br>  
+  <%= link_to "Logout", logout_path %>
 <% end %>
 
 <p><%= flash.notice %></p>
