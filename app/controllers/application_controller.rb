@@ -14,5 +14,6 @@ class ApplicationController < ActionController::Base
       redirect_to welcome_path
     end
   end
+  helper_method :authorize
 
 end
