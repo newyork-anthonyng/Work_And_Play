@@ -16,4 +16,9 @@ class ApplicationController < ActionController::Base
   end
   helper_method :authorize
 
+  def is_current_user?(user)
+    current_user.id == user.id
+  end
+  helper_method :is_current_user?
+
 end

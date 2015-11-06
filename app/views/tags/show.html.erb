@@ -3,13 +3,12 @@
 <ul>
   <% @tag.tasks.each do |task| %>
     <li>
-      <% if current_user.id == task.user.id %>
-        <%= link_to "#{task.description} | #{task.user.fname} YOU!: #{task.user.lname}",
-          home_path %>
+      <% if is_current_user?(task.user) %>
+        <%= link_to "#{task.description} | YOU!", home_path %>
       <% else %>
-        <%= link_to "#{task.description} | #{task.user.fname} #{task.user.lname}",
-          user_path(task.user) %>
-        <% end %>
+        <%= link_to "#{task.description} |
+          #{task.user.fname} #{task.user.lname}", user_path(task.user) %>
+      <% end %>
     </li>
   <% end %>
 </ul>
