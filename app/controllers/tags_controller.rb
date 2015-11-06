@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_action :authorize
 
   def index
     @tags = Tag.all

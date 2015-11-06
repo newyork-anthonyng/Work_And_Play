@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-
+  before_action :authorize
+  
   def create
     @user = User.find(params[:user_id])
     @task = @user.tasks.create(task_params)

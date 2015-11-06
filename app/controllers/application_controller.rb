@@ -9,7 +9,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to welcome_path unless current_user
+    if !current_user
+      flash.notice = "Please log in first."
+      redirect_to welcome_path
+    end
   end
 
 end
