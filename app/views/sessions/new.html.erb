@@ -15,7 +15,19 @@
 
 
 <h1>Signup</h1>
+
 <%= form_for @user, url: users_path, method: :post do |f| %>
+
+  <% if @user.errors.any? %>
+    <h2><%= pluralize(@user.errors.count, "error") %> found.</h2>
+    <ul>
+      <% @user.errors.each_with_index do |msg, i| %>
+        <li><%= msg[1] %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
+
   <p>
     <%= f.label "First Name" %><br>
     <%= f.text_field :fname %>

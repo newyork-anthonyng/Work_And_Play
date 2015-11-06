@@ -15,8 +15,7 @@ class UsersController < ApplicationController
       flash.notice = "Username created."
       redirect_to user_path(@user)
     else
-      flash.notice = "Failed. Username not created."
-      redirect_to welcome_path
+      render "sessions/new"
     end
   end
 
