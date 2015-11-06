@@ -7,14 +7,8 @@
     <%= f.label :tag_list %><br>
     <%= f.text_field :tag_list %>
   </p>
-  <p>
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </p>
-  <p>
-    <%= f.label :points %><br>
-    <%= f.text_field :points %>
-  </p>
+
+    <%= hidden_field_tag "task[category]", "#{category}" %>
   <p>
     <%= f.submit %>
   </p>

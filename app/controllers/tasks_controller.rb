@@ -9,6 +9,8 @@ class TasksController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @task = @user.tasks.create(task_params)
+    @task.points = @task.category == "play" ? 1 : -1
+    @task.save
     redirect_to user_path(@task.user)
   end
 
