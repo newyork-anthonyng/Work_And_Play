@@ -6,57 +6,11 @@
 
   <div class="play_tasks">
     <h2>Play</h2>
-
-    <ul>
-      <% @play_tasks.each do |task| %>
-        <li>
-          <% if task.completed %>
-            <strong><%= task.description %></strong><br>
-            <%= "Total Likes: #{task.votes_for.size}" %><br>
-            <%= link_to "Like", like_user_task_path(task.user, task) %><br>
-
-            Tag list:
-              <% task.tags.each do |tag| %>
-                <%= link_to tag.content, tag_path(tag) %>
-              <% end %>
-              <br>
-          <% else %>
-            Not completed.
-            <%= task.description %><br>
-            <%= "Total Likes: #{task.votes_for.size}" %><br>
-            <%= link_to "Like", like_user_task_path(task.user, task) %><br>
-
-            Tag list:
-              <% task.tags.each do |tag| %>
-                <%= link_to tag.content, tag_path(tag) %>
-              <% end %>
-              <br>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render partial: 'tasks/show', locals: { :object => @play_tasks } %>
   </div>
 
   <div class="work_tasks">
     <h2>Work</h2>
-
-    <ul>
-      <% @work_tasks.each do |task| %>
-      <li>
-        <% if task.completed %>
-          <strong><%= task.description %></strong><br>
-          <%= "Total Likes: #{task.votes_for.size}" %><br>
-          <%= link_to "Like", like_user_task_path(task.user, task) %><br>
-          <br>
-        <% else %>
-          Not completed.
-          <%= task.description %>
-          <%= "Total Likes: #{task.votes_for.size}" %><br>
-          <%= link_to "Like", like_user_task_path(task.user, task) %><br>
-          <br>
-        <% end %>
-      </li>
-      <% end %>
-    </ul>
+    <%= render partial: 'tasks/show', locals: { :object => @work_tasks } %>
   </div>
 </div>

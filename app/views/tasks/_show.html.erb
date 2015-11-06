@@ -24,6 +24,12 @@
         <%= link_to "Mark Complete", complete_user_task_path(task.user, task) %>
 
       <% end %>
+
+      <%= "Likes: #{task.votes_for.size}" %>
+      <br>
+      <% if !is_current_user?(task.user) %>
+        <%= link_to "Like", like_user_task_path(task.user, task) %><br>
+      <% end %>
     </li>
   <% end %>
 </ul>
