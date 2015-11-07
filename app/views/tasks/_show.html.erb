@@ -1,35 +1,29 @@
-<ul>
+<div class="container">
   <% object.each do |task| %>
-    <li>
-      <% if task.completed %>
-        <strong><%= task.description %></strong><br>
-        Points: <%= task.points %><br>
+    <% if task.completed %>
+      <div class="task_show completed">
+        <%= task.description %><br>
 
-        <%= render partial: "tasks/tags", locals: { :task => task } %>
-        <br>
+        <%= render partial: "tasks/tags", locals: { :task => task } %><br>
 
         <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
         <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
-
-      <% else %>
-        Not completed.
+    <% else %>
+      <div class="task_show outstanding">
         <%= task.description %><br>
-        Points: <%= task.points %><br>
 
-        <%= render partial: "tasks/tags", locals: { :task => task } %>
-          <br>
+        <%= render partial: "tasks/tags", locals: { :task => task } %><br>
 
         <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
         <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
         <%= link_to "Mark Complete", complete_user_task_path(task.user, task) %>
+    <% end %>
 
-      <% end %>
-
-      <%= "Likes: #{task.votes_for.size}" %>
-      <br>
+      <br><%= "Likes: #{task.votes_for.size}" %><br>
+      
       <% if !is_current_user?(task.user) %>
         <%= link_to "Like", like_user_task_path(task.user, task) %><br>
       <% end %>
-    </li>
+    </div>
   <% end %>
-</ul>
+</div>

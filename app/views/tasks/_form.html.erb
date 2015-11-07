@@ -1,17 +1,20 @@
-<%= form_for([@user, @user.tasks.build]) do |f| %>
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </p>
+<div class="container">
+  <div class="task_form">
+    <%= form_for([@user, @user.tasks.build]) do |f| %>
+      <p>
+        <%= f.text_field :description, placeholder: "task description" %>
+      </p>
 
-  <p>
-    <%= f.label :tag_list %><br>
-    <%= f.text_field :tag_list %>
-  </p>
+      <p>
+        <%= f.text_field :tag_list, placeholder: "enter list of tags" %>
+      </p>
 
-  <%= hidden_field_tag "task[category]", "#{category}" %>
-  
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+      <%= hidden_field_tag "task[category]", "#{category}" %>
+
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+
+  </div>
+</div>

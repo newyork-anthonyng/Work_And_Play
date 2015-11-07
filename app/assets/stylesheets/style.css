@@ -1,20 +1,25 @@
 /********************/
-/* User's Name      */
+/* Task Form        */
 /********************/
 
-.name_display {
-  margin:0 auto;
+.task_form {
+  border:1px solid black;
+  border-radius:10px;
+  width:250px;
+
+  margin:10px;
+  padding:5px;
 }
 
+.task_show {
+  border:1px solid black;
+  border-radius:10px;
+  width:250px;
 
-.tasks_container {
-  width:1000px;
+  margin:10px;
+  padding:5px;
 }
 
-.play_tasks {
-  float:left;
-}
-
-.work_tasks {
-  float:right;
+.completed {
+  background-color:gray;
 }
