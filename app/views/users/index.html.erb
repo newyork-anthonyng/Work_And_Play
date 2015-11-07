@@ -1,14 +1,34 @@
-<h1>Everyone | Score: <%= @users_score %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <h1>Everyone</h1>
+      <h2>Score: <%= @users_score %></h2>
+      <h2>Total Likes: <%= @users_likes %></h2>
+    </div>
+  </div>
+</div>
 
-<ul>
-  <% @users.each do |user| %>
-
-    <% if user.id == current_user.id %>
-      <li><%= link_to "YOU! #{user.fname}", home_path %> || <%= user.score %></li>
-    <% else %>
-      <li><%= link_to user.fname, user_path(user) %> || <%= user.score %></li>
+<div class="users">
+  <div class="container">
+    <% @users.each do |user| %>
+      <div class="row">
+        <div class="col-md-3">
+          <% if user.id == current_user.id %>
+            <%= link_to "ME!", home_path %>
+          <% else %>
+            <%= link_to user.fname, user_path(user) %>
+          <% end %>
+        </div>
+        <div class="col-md-3">
+          Score: <%= user.score %>
+        </div>
+        <div class="col-md-3">
+          Tasks: <%= user.tasks.size %>
+        </div>
+        <div class="col-md-3">
+          Total Likes: <%= user.likes %>
+        </div>
+      </div>
     <% end %>
-
-    <h2>Total Likes: <%= user.likes %></h2>
-  <% end %>
-</ul>
+  </div>
+</div>

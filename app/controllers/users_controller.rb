@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     @users_score = @users.map do |user|
       user.score
     end.reduce(:+)
+
+    @users_likes = @users.map do |user|
+      user.likes
+    end.reduce(:+)
   end
 
   def create
