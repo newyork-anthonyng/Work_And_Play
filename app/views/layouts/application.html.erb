@@ -3,20 +3,23 @@
 <head>
   <title>WorkAndPlay</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" rel="stylesheet">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<% if current_user %>
-  <%= "Hey #{current_user.fname}" %><br>
-  <%= link_to "Home", home_path %><br>
-  <%= link_to "All Users", users_path %><br>
-  <%= link_to "All Tags", tags_path %><br>
-  <%= link_to "Your Tags", user_tags_path(current_user) %><br>
-  <%= link_to "All Tasks", all_tasks_path %><br>
-  <%= link_to "Logout", logout_path %>
-<% end %>
+<div class="navigation">
+  <% if current_user %>
+    <%= "Hey #{current_user.fname}" %><br>
+    <%= link_to "Home", home_path %><br>
+    <%= link_to "All Users", users_path %><br>
+    <%= link_to "All Tags", tags_path %><br>
+    <%= link_to "Your Tags", user_tags_path(current_user) %><br>
+    <%= link_to "All Tasks", all_tasks_path %><br>
+    <%= link_to "Logout", logout_path %>
+  <% end %>
+</div>
 
 <p><%= flash.notice %></p>
 <%= yield %>

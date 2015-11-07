@@ -1,8 +1,8 @@
-<h1>All Tags</h1>
+<h1>All Tags (<%= @tags.size %>)</h1>
 <ul>
   <% @tags.each do |tag| %>
     <li>
-      <%= link_to tag.content, tag_path(tag) %>
+      <%= link_to tag.content, tag_path(tag) %> (<%= tag.tasks.size %>)
     </li>
   <% end %>
 </ul>
