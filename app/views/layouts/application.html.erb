@@ -9,17 +9,21 @@
 </head>
 <body>
 
-<div class="navigation">
-  <% if current_user %>
-    <%= "Hey #{current_user.fname}" %><br>
-    <%= link_to "Home", home_path %><br>
-    <%= link_to "All Users", users_path %><br>
-    <%= link_to "All Tags", tags_path %><br>
-    <%= link_to "Your Tags", user_tags_path(current_user) %><br>
-    <%= link_to "All Tasks", all_tasks_path %><br>
-    <%= link_to "Logout", logout_path %>
-  <% end %>
-</div>
+<% if current_user %>
+  <nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Home", home_path, class: "navbar-brand" %></li>
+      <li><%= link_to "All Users", users_path %></li>
+      <li><%= link_to "All Tags", tags_path %></li>
+      <li><%= link_to "Your Tags", user_tags_path(current_user) %></li>
+      <li><%= link_to "All Tasks", all_tasks_path %></li>
+    </ul>
+
+    <ul class="nav navbar-nav pull-right">
+        <li><%= link_to "Logout", logout_path %></li>
+    </ul>
+  </nav>
+<% end %>
 
 <p><%= flash.notice %></p>
 <%= yield %>

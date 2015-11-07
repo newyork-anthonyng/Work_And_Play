@@ -1,23 +1,23 @@
 <%= form_tag login_path do %>
 
     <div class="row">
-      <div class="col-sm-7"></div>
-      <div class="col-sm-2">
+      <div class="col-md-7"></div>
+      <div class="col-md-2">
         <%= label_tag :email %>
       </div>
-      <div class="col-sm-3">
+      <div class="col-md-3">
         <%= label_tag :password %>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-sm-7"></div>
-      <div class="col-sm-2">
+      <div class="col-md-7"></div>
+      <div class="col-md-2">
         <%= text_field_tag :email %>
       </div>
-      <div class="col-sm-3">
+      <div class="col-md-3">
         <%= password_field_tag :password %>
-        <%= submit_tag "Login" %>
+        <%= submit_tag "Login", class: "btn btn-primary" %>
       </div>
     </div>
   </div>
