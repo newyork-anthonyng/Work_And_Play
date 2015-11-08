@@ -12,7 +12,7 @@
 }
 
 .task_show {
-  border:1px solid black;
+  border:2px solid black;
   border-radius:10px;
   width:250px;
 
@@ -21,7 +21,28 @@
 }
 
 .completed {
-  background-color:gray;
+  background-color:#CCCCFF;
+}
+
+#upper-right-button {
+  padding: 5px 25px 0 0;
+}
+
+#task-information {
+  padding-left: 30px;
+}
+
+#complete-button {
+  background-color:#CAFFCA;
+  width:170px;
+}
+
+#delete-button {
+  background-color:#FFDBDB;
+}
+
+#like-button {
+  background-color:#CAFFCA;
 }
 
 /********************/

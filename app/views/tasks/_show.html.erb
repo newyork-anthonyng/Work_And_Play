@@ -2,42 +2,43 @@
   <% object.each do |task| %>
     <% if task.completed %>
       <div class="task_show completed">
-        <%= task.description %><br>
-
-        <%= render partial: "tasks/tags", locals: { :task => task } %><br>
-
-        <%= link_to edit_user_task_path(task.user, task), class: "btn btn-default" do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-
-        <%= link_to user_task_path(task.user, task), class: "btn btn-default", method: :delete do %>
-          <span class="glyphicon glyphicon-remove"></span>
-        <% end %>
-
     <% else %>
       <div class="task_show outstanding">
-        <%= task.description %><br>
-
-        <%= render partial: "tasks/tags", locals: { :task => task } %><br>
-
-        <%= link_to user_task_path(task.user, task), class: "btn btn-default", method: :delete do %>
-          <span class="glyphicon glyphicon-remove"></span>
-        <% end %>
-
-        <%= link_to edit_user_task_path(task.user, task), class: "btn btn-default" do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-
-        <%= link_to complete_user_task_path(task.user, task), class: "btn btn-default" do %>
-          <span class="glyphicon glyphicon-ok"></span>
-        <% end %>
     <% end %>
 
-      <br><%= "Likes: #{task.votes_for.size}" %><br>
+      <div class="row", id="upper-right-button">
+        <% if is_current_user?(task.user) %>
+          <%= link_to user_task_path(task.user, task), class: "btn btn-default pull-right", id: "delete-button", method: :delete do %>
+            <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+        <% else %>
+          <%= link_to like_user_task_path(task.user, task), class: "btn btn-default pull-right", id: "like-button" do %>
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+          <% end %>
+        <% end %>
+      </div>
 
-      <% if !is_current_user?(task.user) %>
-        <%= link_to "Like", like_user_task_path(task.user, task) %><br>
-      <% end %>
+      <div class="row", id="task-information">
+        <%= task.description %><br>
+        <%= render partial: "tasks/tags", locals: { :task => task } %><br>
+
+        <% if is_current_user?(task.user) %>
+          <%= link_to edit_user_task_path(task.user, task), class: "btn btn-default" do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+
+          <% if !task.completed %>
+            <%= link_to complete_user_task_path(task.user, task), class: "btn btn-default", id: "complete-button" do %>
+              <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
+          <% end %>
+        <% end %>
+        <br>
+        <span class="glyphicon glyphicon-heart"></span>
+        <%= "#{task.votes_for.size}" %>
+      </div>
+
+      <br>
     </div>
   <% end %>
 </div>
