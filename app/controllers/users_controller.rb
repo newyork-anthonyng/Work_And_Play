@@ -49,8 +49,8 @@ class UsersController < ApplicationController
     end
 
     def set_play_and_work_tasks
-      @play_tasks = @user.tasks.where(category: "play").order(:description)
-      @work_tasks = @user.tasks.where(category: "work").order(:description)
+      @play_tasks = @user.tasks.where(category: "play").order(:completed, :description)
+      @work_tasks = @user.tasks.where(category: "work").order(:completed, :description)
     end
 
 end

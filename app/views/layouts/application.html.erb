@@ -12,7 +12,11 @@
 <% if current_user %>
   <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
-      <li><%= link_to "Home", home_path, class: "navbar-brand" %></li>
+      <li>
+        <%= link_to home_path, class: "navbar-brand" do %>
+          <span class="glyphicon glyphicon-home"></span>
+        <% end %>
+      </li>
       <li><%= link_to "All Users", users_path %></li>
       <li><%= link_to "All Tags", tags_path %></li>
       <li><%= link_to "Your Tags", user_tags_path(current_user) %></li>

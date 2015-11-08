@@ -21,7 +21,7 @@
 }
 
 .completed {
-  background-color:#CCCCFF;
+  background-color:#CAFFCA;
 }
 
 #upper-right-button {
@@ -32,8 +32,18 @@
   padding-left: 30px;
 }
 
+#task-information-form {
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+
 #complete-button {
   background-color:#CAFFCA;
+  width:170px;
+}
+
+#add-button {
   width:170px;
 }
 

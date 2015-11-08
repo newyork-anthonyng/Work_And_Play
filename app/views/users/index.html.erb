@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-2 col-md-offset-5 well name_display">
       <h1>Everyone</h1>
       <h2>Score: <%= @users_score %></h2>
-      <h2>Total Likes: <%= @users_likes %></h2>
+      <h2><span class="glyphicon glyphicon-heart"></span> <%= @users_likes %></h2>
     </div>
   </div>
 </div>
@@ -26,7 +26,7 @@
           Tasks: <%= user.tasks.size %>
         </div>
         <div class="col-md-3">
-          Total Likes: <%= user.likes %>
+          <span class="glyphicon glyphicon-heart"></span> <%= user.likes %>
         </div>
       </div>
     <% end %>
