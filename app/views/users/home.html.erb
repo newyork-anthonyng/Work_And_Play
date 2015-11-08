@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2 col-md-offset-5">
-      <h1><%= @user.fname %></h1><br>
-      <h2>Score: <%= @user.score %></h2><br>
+    <div class="col-md-2 col-md-offset-5 well name_display">
+      <h1><%= @user.fname %></h1>
+      <h2>Score: <%= @user.score %></h2>
       <h2>Likes: <%= @user.likes %></h2>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="col-md-2 col-md-offset-2">
+<div class="container tasks">
+  <div class="col-md-6">
     <div class="container">
       <h2>Play</h2>
       <%= render partial: 'tasks/form', locals: { :category => "play" } %>
       <%= render partial: 'tasks/show', locals: { :object => @play_tasks } %>
     </div>
   </div>
-  <div class="col-md-2 col-md-offset-2">
+  <div class="col-md-6">
     <div class="container">
       <h2>Work</h2>
       <%= render partial: 'tasks/form', locals: { category: "work" } %>

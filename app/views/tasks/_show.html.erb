@@ -6,21 +6,35 @@
 
         <%= render partial: "tasks/tags", locals: { :task => task } %><br>
 
-        <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
-        <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
+        <%= link_to edit_user_task_path(task.user, task), class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+
+        <%= link_to user_task_path(task.user, task), class: "btn btn-default", method: :delete do %>
+          <span class="glyphicon glyphicon-remove"></span>
+        <% end %>
+
     <% else %>
       <div class="task_show outstanding">
         <%= task.description %><br>
 
         <%= render partial: "tasks/tags", locals: { :task => task } %><br>
 
-        <%= link_to "Delete", user_task_path(task.user, task), method: :delete %>
-        <%= link_to "Edit", edit_user_task_path(task.user, task) %>,
-        <%= link_to "Mark Complete", complete_user_task_path(task.user, task) %>
+        <%= link_to user_task_path(task.user, task), class: "btn btn-default", method: :delete do %>
+          <span class="glyphicon glyphicon-remove"></span>
+        <% end %>
+
+        <%= link_to edit_user_task_path(task.user, task), class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+
+        <%= link_to complete_user_task_path(task.user, task), class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-ok"></span>
+        <% end %>
     <% end %>
 
       <br><%= "Likes: #{task.votes_for.size}" %><br>
-      
+
       <% if !is_current_user?(task.user) %>
         <%= link_to "Like", like_user_task_path(task.user, task) %><br>
       <% end %>
