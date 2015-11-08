@@ -1,16 +1,21 @@
-<h1><%= @task.description %></h1>
 
-<%= form_for [@task.user, @task] do |f| %>
-  <p>
+<div class="container">
+
+  <h1><%= @task.description %></h1>
+
+  <%= form_for [@task.user, @task] do |f| %>
+
+    <%= link_to user_task_path(@task.user, @task), class: "btn btn-default pull-right", id: "delete-button", method: :delete do %>
+      <span class="glyphicon glyphicon-remove"></span>
+    <% end %>
+
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </p>
-  <p>
+    <%= f.text_field :description %><br><br>
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </p>
+    <%= f.text_field :category %><br><br>
 
-  <p><%= link_to "Delete", user_task_path(@task.user, @task), method: :delete %></p>
-  <p><%= f.submit "Update" %></p>
-<% end %>
-<%= link_to "<< Back", user_path(@task.user) %>
+    <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'add-button') do %>
+      <span class="glyphicon glyphicon-plus"></span>
+    <% end %>
+  <% end %>
+</div>

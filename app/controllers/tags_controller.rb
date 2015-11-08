@@ -2,6 +2,7 @@ class TagsController < ApplicationController
   before_action :authorize
 
   def index
+    clear_empty_tags
     @tags = Tag.all
   end
 
@@ -15,5 +16,14 @@ class TagsController < ApplicationController
       task.tags
     end.flatten
   end
+
+  private
+    def clear_empty_tags
+      @tags = Tag.all
+
+      @tags.each do |tag|
+        tag.delete if tag.tasks.empty?
+      end
+    end
 
 end
